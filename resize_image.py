@@ -32,17 +32,12 @@ def scale_image(input_image_path,
     return scaled_image
 
 def conver_to_mono(input_image):
-    
-    #mono_image=input_image.convert('L')
-    #output_image_path='mono_'+str(input_image)    
-    #mono_image.save(output_image_path)
     return input_image.convert('L')
 
 def get_image_matrix(input_image):
-
     arr = np.asarray(input_image)/255
-    print(arr)
-    	
+    #print(arr)
+    return arr	
 
 if __name__ == '__main__':
     scaled_img=scale_image(input_image_path='4.jpg',
