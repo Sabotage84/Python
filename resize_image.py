@@ -1,8 +1,6 @@
 from PIL import Image
 import numpy as np
-#import ImageEnhance
-#import ImageFilter
- 
+
 def scale_image(input_image_path,
                 output_image_path,
                 width=None,
@@ -30,18 +28,28 @@ def scale_image(input_image_path,
     width, height = scaled_image.size
     print('The scaled image size is {wide} wide x {height} '
           'high'.format(wide=width, height=height))
+    
+    return scaled_image
 
-    mono_image=scaled_image.convert('L')    
-    mono_image.save(output_image_path)
-    arr = np.asarray(mono_image)
+def conver_to_mono(input_image):
+    
+    #mono_image=input_image.convert('L')
+    #output_image_path='mono_'+str(input_image)    
+    #mono_image.save(output_image_path)
+    return input_image.convert('L')
+
+def get_image_matrix(input_image):
+
+    arr = np.asarray(input_image)/255
     print(arr)
-
-    arr2=arr/255
-    print(arr2)
     	
 
 if __name__ == '__main__':
-    scale_image(input_image_path='4.jpg',
+    scaled_img=scale_image(input_image_path='4.jpg',
                 output_image_path='4_scaled.jpg',
                 width=10)
+    mono_img = conver_to_mono(scaled_img)
+
+    get_image_matrix(mono_img)
+
     input("End...")
